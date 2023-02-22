@@ -54,5 +54,20 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "name": "air-quality-back-office",
+  "description": "Air Quality Back Office",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyLzq/Air-Quality-Back-Office.git"
+  },
+  "keywords": [
+    "mqtt"
+  ],
+  "author": "AnthonyLzq <sluzquinosa@uni.pe>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnthonyLzq/Air-Quality-Back-Office/issues"
+  },
+  "homepage": "https://github.com/AnthonyLzq/Air-Quality-Back-Office#readme"
 }
