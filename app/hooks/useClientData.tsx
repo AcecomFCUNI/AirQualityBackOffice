@@ -41,6 +41,7 @@ const useClientData = () => {
   useEffect(() => {
     const socket = io(ENV.WS_URL, {
       reconnectionDelayMax: 10000,
+      transports: ['websocket', 'polling', 'flashsocket'],
       query: {
         id: ENV.USER_ID,
         moduleId: 1,

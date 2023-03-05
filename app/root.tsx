@@ -44,12 +44,22 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Air Quality Back Office',
+  title: 'Air Quality',
   viewport: 'width=device-width,initial-scale=1',
-  'Content-Security-Policy': {
-    httpEquiv: 'Content-Security-Policy',
-    content: 'upgrade-insecure-requests'
-  }
+  keywords: 'Air,Quality,Lima,Peru,IoT',
+  description: 'Air quality meter for Lima, Peru',
+  'og:type': 'website',
+  'og:url': 'https://air-quality-back-office.vercel.app',
+  'og:title': 'Air Quality',
+  'og:description': 'Air quality meter for Lima, Peru',
+  // 'og:image': 'https://acecom.dev/images/Marck5.png',
+  'og:locale': 'es_ES',
+  'twitter:card': 'summary_large_image',
+  'twitter:creator': '@AnthonyLzq',
+  'twitter:url': 'https://air-quality-back-office.vercel.app',
+  'twitter:title': 'Air Quality',
+  'twitter:description': 'Air quality meter for Lima, Peru.'
+  // 'twitter:image': 'https://acecom.dev/images/Marck5.png'
 })
 
 type LoaderData = {
