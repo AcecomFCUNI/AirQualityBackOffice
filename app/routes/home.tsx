@@ -20,7 +20,8 @@ export const links: LinksFunction = () => [
 ]
 
 export const loader: LoaderFunction = async ({ request }) => {
-  if (!request.url.includes('/home/realtime')) return redirect('/home/realtime')
+  if (!request.url.includes('/home/realtime/map'))
+    return redirect('/home/realtime/map')
 
   return null
 }
