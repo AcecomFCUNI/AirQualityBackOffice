@@ -36,6 +36,7 @@ declare module '@mui/material/styles' {
     smd: true
     sm: true
     md: true
+    lmd: true
     lg: true
     xl: true
   }
@@ -62,6 +63,7 @@ const themeConfig = {
       sm: 600,
       smd: 756,
       md: 900,
+      lmd: 1028,
       lg: 1200,
       xl: 1536
     }

@@ -1,4 +1,4 @@
-import type { LoaderFunction } from '@remix-run/node'
+import type { LinksFunction, LoaderFunction } from '@remix-run/node'
 import { redirect } from '@remix-run/node'
 import { Link, Outlet } from '@remix-run/react'
 
@@ -11,6 +11,13 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import { CustomListItemIcon, Header } from '~/components'
 import { EXTERNAL_BACKGROUND, makeStyles } from '~/utils'
 import FullLogo from '~/static/images/fullLogo.png'
+
+export const links: LinksFunction = () => [
+  {
+    rel: 'stylesheet',
+    href: 'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css'
+  }
+]
 
 export const loader: LoaderFunction = async ({ request }) => {
   if (!request.url.includes('/home/realtime')) return redirect('/home/realtime')
