@@ -5,18 +5,22 @@ import type { FC } from 'react'
 type CardProps = {
   data: string
   value: ReactNode
+  suffix?: string
 }
 
 const DataCard: FC<CardProps> = props => {
-  const { data, value } = props
+  const { data, value, suffix } = props
 
   return (
     <Card>
-      <CardContent style={{ textAlign: 'center' }}>
-        <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+      <CardContent style={{ textAlign: 'start' }}>
+        <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
           {data}
         </Typography>
-        <Typography variant='body2'>{value}</Typography>
+        <Typography variant='body2' sx={{ fontSize: 32 }} color='#004EDA'>
+          {value}
+          {suffix}
+        </Typography>
       </CardContent>
     </Card>
   )
