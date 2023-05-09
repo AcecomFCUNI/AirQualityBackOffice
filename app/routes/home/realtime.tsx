@@ -56,9 +56,9 @@ const Realtime = () => {
           item
           smd={6}
           style={{
-            paddingTop: '0px',
-            paddingBottom: '24px',
-            height: 'calc(100vh - 64px)'
+            padding: '0px 24px 24px',
+            height: 'calc(100vh - 64px)',
+            overflow: 'auto'
           }}
         >
           <Grid
