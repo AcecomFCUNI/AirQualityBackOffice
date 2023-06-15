@@ -31,7 +31,7 @@ const useStyles = makeStyles()(theme => ({
   container: {
     backgroundColor: '#bdbddd',
     margin: '0px auto auto 0px',
-    paddingTop: '24px',
+    padding: '24px 0px 24px',
     width: '100%',
     '& .MuiGrid-item': {
       paddingTop: '0px'
@@ -39,13 +39,13 @@ const useStyles = makeStyles()(theme => ({
     height: 'calc(100vh - 64px)'
   },
   leftGridItem: {
-    height: 'calc(100vh - 96px)',
+    height: '100%',
     overflow: 'auto',
     padding: '0px 24px 24px'
   },
   rightGridItem: {
     paddingTop: '0px',
-    height: 'calc(100vh - 96px)'
+    height: '100%'
   },
   lefGridContainer: {
     justifyContent: 'center',
@@ -67,6 +67,13 @@ const useStyles = makeStyles()(theme => ({
   },
   paddingTop0: {
     paddingTop: '0px !important'
+  },
+  card: {
+    height: 'fit-content',
+    paddingTop: '0px !important'
+  },
+  mapContainer: {
+    height: 'min-content'
   }
 }))
 
@@ -131,20 +138,29 @@ const Realtime = () => {
         </Grid>
       </Grid>
       <Grid className={classes.rightGridItem} item smd={6}>
-        <Grid className={classes.rightGridContainer} container spacing={3}>
-          <Grid className={classes.paddingTop0} item xxs={6}>
+        <Grid
+          className={classes.rightGridContainer}
+          container
+          columnSpacing={3}
+          rowGap={2}
+        >
+          <Grid className={classes.card} item xxs={6}>
             <DataCard data='Calidad de Aire' value={aq} />
           </Grid>
-          <Grid className={classes.paddingTop0} item xxs={6}>
+          <Grid className={classes.card} item xxs={6}>
             <DataCard data='H2S' value={h2s} />
           </Grid>
-          <Grid item xxs={6}>
+          <Grid className={classes.card} item xxs={6}>
             <DataCard data='Humedad' value={humidity} />
           </Grid>
-          <Grid item xxs={6}>
+          <Grid className={classes.card} item xxs={6}>
             <DataCard data='Temperatura' value={temperature} suffix=' °C' />
           </Grid>
-          <Grid item xxs={12}>
+          <Grid
+            className={`${classes.paddingTop0} ${classes.mapContainer}`}
+            item
+            xxs={12}
+          >
             <Outlet />
           </Grid>
         </Grid>

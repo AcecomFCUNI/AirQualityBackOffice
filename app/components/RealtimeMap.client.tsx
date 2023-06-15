@@ -8,7 +8,7 @@ const initialPosition: LatLngTuple = [-12.023505674744937, -77.04844018399862]
 
 const useStyles = makeStyles()((theme, props) => ({
   mapContainer: {
-    boxSizing: 'border-box'
+    // boxSizing: 'border-box'
   },
   map: {
     height: '100%',

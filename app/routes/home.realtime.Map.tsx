@@ -3,7 +3,7 @@ import { ClientOnly, Map as MapComponent } from '~/components'
 import { makeStyles } from '~/utils'
 
 const MAP_HEIGHT_SMALL = 'calc(100vh - 452px)'
-const MAP_HEIGHT = 'calc(100vh - 386px)'
+const MAP_HEIGHT = 'calc(100vh - 368px)'
 const MAP_WIDTH = '100%'
 
 const useStyles = makeStyles()((theme: Theme, props) => ({
