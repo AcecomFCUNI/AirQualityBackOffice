@@ -7,9 +7,6 @@ import { makeStyles } from '~/utils'
 const initialPosition: LatLngTuple = [-12.023505674744937, -77.04844018399862]
 
 const useStyles = makeStyles()((theme, props) => ({
-  mapContainer: {
-    // boxSizing: 'border-box'
-  },
   map: {
     height: '100%',
     width: '100%',
@@ -26,10 +23,7 @@ const Map: FC<Props> = props => {
   const { classes } = useStyles()
 
   return (
-    <div
-      id='mapContainer'
-      className={`${classes.mapContainer} ${mapContainerClassName}`}
-    >
+    <div id='mapContainer' className={mapContainerClassName}>
       <MapContainer
         className={classes.map}
         center={initialPosition}
