@@ -9,9 +9,10 @@ const GlobalStyle = () => (
         fontFamily: 'Nunito'
       },
       '*::-webkit-scrollbar': {
-        backgroundColor: '#5bc1a5',
+        backgroundColor: '#cacae4',
         width: 8,
-        height: 8
+        height: 8,
+        borderRadius: 16
       },
       '*::-webkit-scrollbar-thumb': {
         background: 'grey',

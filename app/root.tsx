@@ -1,7 +1,7 @@
 import type {
   LinksFunction,
   LoaderFunction,
-  MetaFunction
+  V2_MetaFunction
 } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import {
@@ -42,25 +42,27 @@ export const links: LinksFunction = () => [
   }
 ]
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'Air Quality',
-  viewport: 'width=device-width,initial-scale=1',
-  keywords: 'Air,Quality,Lima,Peru,IoT',
-  description: 'Air quality meter for Lima, Peru',
-  'og:type': 'website',
-  'og:url': 'https://air-quality-back-office.vercel.app',
-  'og:title': 'Air Quality',
-  'og:description': 'Air quality meter for Lima, Peru',
-  // 'og:image': 'https://acecom.dev/images/Marck5.png',
-  'og:locale': 'es_ES',
-  'twitter:card': 'summary_large_image',
-  'twitter:creator': '@AnthonyLzq',
-  'twitter:url': 'https://air-quality-back-office.vercel.app',
-  'twitter:title': 'Air Quality',
-  'twitter:description': 'Air quality meter for Lima, Peru.'
-  // 'twitter:image': 'https://acecom.dev/images/Marck5.png'
-})
+export const meta: V2_MetaFunction = () => [
+  { property: 'viewport', content: 'width=device-width,initial-scale=1' },
+  { property: 'keywords', content: 'Air,Quality,Lima,Peru,IoT' },
+  { property: 'description', content: 'Air quality meter for Lima, Peru' },
+  { property: 'og:type', content: 'website' },
+  { property: 'og:url', content: 'https://air-quality-back-office.vercel.app' },
+  { property: 'og:title', content: 'Air Quality' },
+  { property: 'og:description', content: 'Air quality meter for Lima, Peru' },
+  { property: 'og:locale', content: 'es_ES' },
+  { property: 'twitter:card', content: 'summary_large_image' },
+  { property: 'twitter:creator', content: '@AnthonyLzq' },
+  {
+    property: 'twitter:url',
+    content: 'https://air-quality-back-office.vercel.app'
+  },
+  { property: 'twitter:title', content: 'Air Quality' },
+  {
+    property: 'twitter:description',
+    content: 'Air quality meter for Lima, Peru.'
+  }
+]
 
 type LoaderData = {
   ENV: ENV
@@ -78,6 +80,8 @@ const App = () => {
   return (
     <html lang='en'>
       <head>
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
         <Meta />
         <Links />
       </head>
