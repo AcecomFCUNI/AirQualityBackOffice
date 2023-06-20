@@ -20,8 +20,8 @@ export const links: LinksFunction = () => [
 ]
 
 export const loader: LoaderFunction = async ({ request }) => {
-  if (!request.url.includes('/home/realtime/map'))
-    return redirect('/home/realtime/map')
+  if (!request.url.includes('/demo/realtime/map'))
+    return redirect('/demo/realtime/map')
 
   return null
 }
@@ -56,7 +56,7 @@ const useStyles = makeStyles()(() => ({
   }
 }))
 
-const Dashboard = () => {
+const Demo = () => {
   const { classes } = useStyles()
 
   return (
@@ -72,7 +72,7 @@ const Dashboard = () => {
             <CustomListItemIcon>
               <HomeIcon fontSize='small' color='inherit' />
             </CustomListItemIcon>
-            <ListItemText>Dashboard</ListItemText>
+            <ListItemText>Demo</ListItemText>
           </ListItemButton>
           <ListItemButton>
             <CustomListItemIcon>
@@ -102,4 +102,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Demo
