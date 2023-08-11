@@ -1,3 +1,4 @@
+import { useContext, type ReactNode } from 'react'
 import type {
   LinksFunction,
   LoaderFunction,
@@ -14,6 +15,9 @@ import {
   useLoaderData
 } from '@remix-run/react'
 
+import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/material'
+import { withEmotionCache } from '@emotion/react'
+
 import Nunito300 from '@fontsource/nunito/300.css'
 import Nunito400 from '@fontsource/nunito/400.css'
 import Nunito500 from '@fontsource/nunito/500.css'
@@ -21,7 +25,61 @@ import Nunito700 from '@fontsource/nunito/700.css'
 
 import type { ENV } from './env.server'
 import { getENV } from './env.server'
-import { GlobalStyle } from './global'
+import { GlobalStyle, theme } from './global'
+import { ClientStyleContext } from './context'
+
+type DocumentProps = {
+  children: ReactNode
+  title?: string
+}
+
+const Document = withEmotionCache(
+  ({ children, title }: DocumentProps, emotionCache) => {
+    const clientStyleData = useContext(ClientStyleContext)
+
+    // Only executed on client
+    useEnhancedEffect(() => {
+      // re-link sheet container
+      emotionCache.sheet.container = document.head
+      // re-inject tags
+      const tags = emotionCache.sheet.tags
+      emotionCache.sheet.flush()
+      tags.forEach(tag => {
+        // eslint-disable-next-line no-underscore-dangle
+        ;(emotionCache.sheet as any)._insertTag(tag)
+      })
+      // reset cache to reapply global styles
+      clientStyleData.reset()
+    }, [])
+
+    return (
+      <html lang='en'>
+        <head>
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='width=device-width,initial-scale=1' />
+          <meta name='theme-color' content={theme.palette.primary.main} />
+          {title ? <title>{title}</title> : null}
+          <Meta />
+          <Links />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          />
+          <meta
+            name='emotion-insertion-point'
+            content='emotion-insertion-point'
+          />
+        </head>
+        <body>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </body>
+      </html>
+    )
+  }
+)
 
 export const links: LinksFunction = () => [
   {
@@ -78,26 +136,15 @@ const App = () => {
   const { ENV } = useLoaderData<LoaderData>()
 
   return (
-    <html lang='en'>
-      <head>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <GlobalStyle />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(ENV)}`
-          }}
-        />
-        <LiveReload />
-      </body>
-    </html>
+    <Document>
+      <GlobalStyle />
+      <Outlet />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.ENV = ${JSON.stringify(ENV)}`
+        }}
+      />
+    </Document>
   )
 }
 

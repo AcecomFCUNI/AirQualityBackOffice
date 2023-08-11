@@ -1,1 +1,1 @@
-export * from './StylesContext'
+export * from './ClientStyleContext'
